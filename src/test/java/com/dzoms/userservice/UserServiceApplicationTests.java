@@ -1,5 +1,7 @@
 package com.dzoms.userservice;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -10,4 +12,9 @@ class UserServiceApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+    @DisplayName("1 equals 1?")
+	void test() {
+		Assertions.assertEquals(1, 1);
+	}
 }
