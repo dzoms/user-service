@@ -8,7 +8,7 @@ pipeline {
                 script {
                 def test = 2 + 2 > 3 ? 'cool' : 'not cool'
                     // Запуск тестов Maven
-                    sh 'mvn test'
+                    sh './mvnw test'
                 }
                 script {
                     sh 'echo "Я работаю"'
