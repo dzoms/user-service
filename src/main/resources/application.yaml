@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/user_service
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  liquibase:
+    change-log: classpath:/db/changelog.xml
+  web:
+    resources:
+      add-mappings: false
+server:
+  port: 8080
+  error:
+    whitelabel:
+      enabled: false
