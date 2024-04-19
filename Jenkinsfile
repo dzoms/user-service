@@ -8,6 +8,9 @@ pipeline {
                     // Запуск тестов Maven
                     sh 'mvn test'
                 }
+                script {
+                    sh 'echo "Я работаю"'
+                }
             }
         }
 
