@@ -8,6 +8,9 @@ pipeline {
     options {
         timestamps()
     }
+    options {
+        timestamps()
+    }
 
     environment {
         MAVEN_TEST=" test"
