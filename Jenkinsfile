@@ -9,11 +9,6 @@ pipeline {
     }
     stages {
         stage('Test') {
-            agent {
-                docker {
-                    image 'maven:3.9.6'
-                }
-            }
             steps {
                 sh "mvn ${MAVEN_TEST}"
             }
