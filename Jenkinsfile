@@ -5,13 +5,6 @@ pipeline {
         label "main"
     }
 
-    options {
-        timestamps()
-    }
-    options {
-        timestamps()
-    }
-
     environment {
         MAVEN_TEST=" test"
         MAVEN_BUILD="clean package -Dskiptest"
