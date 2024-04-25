@@ -1,8 +1,13 @@
 properties([disableConcurrentBuilds()])
 
 pipeline {
-    agent any
+    agent {
+        label "main"
+    }
 
+    options {
+        timestamps()
+    }
     options {
         timestamps()
     }
