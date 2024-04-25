@@ -1,17 +1,23 @@
-pipeline {
-    agent any
+properties([disableConcurrentBuilds()])
 
+pipeline {
+    agent {
+        label "main"
+    }
+
+    options {
+        timestamps()
+    }
+
+    environment {
+        MAVEN_TEST=" test"
+        MAVEN_BUILD="clean package -Dskiptest"
+    }
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
-                echo 'Я работаю'
-                script {
-                def test = 2 + 2 > 3 ? 'cool' : 'not cool'
-                    // Запуск тестов Maven
-                    sh './mvnw test'
-                }
-                script {
-                    sh 'echo "Я работаю"'
+                withMaven(maven: 'MAVEN_ENV') {
+                    sh "mvn ${MAVEN_TEST}"
                 }
             }
         }
@@ -19,8 +25,12 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                    sh "docker-compose up -d"
+                    withMaven(maven: 'MAVEN_ENV') {
+                        sh "mvn ${MAVEN_BUILD}"
+                    }
                     // Сборка Docker образа
-                    sh 'docker build -t dzoms/user-service .'
+                    sh "docker build -t dzoms/user-service ."
                 }
             }
         }
