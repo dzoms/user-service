@@ -1,9 +1,7 @@
 properties([disableConcurrentBuilds()])
 
 pipeline {
-    agent {
-        label "main"
-    }
+    agent any
 
     environment {
         MAVEN_TEST=" test"
